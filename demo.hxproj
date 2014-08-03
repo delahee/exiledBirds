@@ -22,7 +22,7 @@
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="tools=1.4.0&#xA;resourcesPath=assets&#xA;display&#xA;web" />
+    <option directives="tools=1.4.0&#xA;noEmit&#xA;resourcesPath=assets&#xA;display&#xA;web" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
@@ -32,6 +32,7 @@
   <!-- haxelib libraries -->
   <haxelib>
     <library name="openfl" />
+    <library name="hscript" />
     <library name="format" />
     <library name="h3d" />
     <library name="hxsl" />
