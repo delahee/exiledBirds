@@ -2,6 +2,7 @@ import flash.display.Bitmap;
 
 class Screen extends h2d.Sprite {
 	public var isStarted = false;
+	public var paused = false;
 	
 	public static var me : Screen;
 	public static var ALL : List<Screen>= new List();

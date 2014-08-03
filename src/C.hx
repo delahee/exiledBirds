@@ -11,6 +11,6 @@ class C{
 	 * returns a number of frame
 	 */
 	public static function time2frame( ms ) {
-		return ms / DT;
+		return ms / (DT * 1000.0);
 	}
 }

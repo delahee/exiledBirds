@@ -5,16 +5,20 @@ using Lambda;
 class FXManager
 {
 	public var rep : List<FX>;
-	public static var self : FXManager = new FXManager();
-	public function new()
-	{
+	public static var self : FXManager;
+	
+	public function new() {
 		rep = new List<FX>();
+		self = this;
 	}
 	
-	public function update()
-	{
+	public function update() {
 		if ( rep.length > 0) 
-			rep = rep.filter( function(fx) return fx.update() );
+			rep = rep.filter( function(fx) { 
+				var cont = fx.update();
+				if ( !cont ) fx.kill();
+				return cont;
+			});
 	}
 	
 	public function add(  x :FX ){

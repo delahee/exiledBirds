@@ -59,7 +59,7 @@ class Ticker
 		var otfr = Std.int(totalFrame);
 		totalFrame += df;
 		fr = Std.int( totalFrame );
-		dfr = otfr - fr;
+		dfr = fr- otfr;
 		ufr++;
 	}
 }

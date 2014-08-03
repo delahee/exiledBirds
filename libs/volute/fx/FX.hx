@@ -6,8 +6,8 @@ class FX
 	public dynamic function onKill(){}
 	public dynamic function onUpdate(t) { }
 	
-	public function new()
-	{
+	public function new() {
+		FXManager.self.add(this);
 	}
 	
 	public function kill(){

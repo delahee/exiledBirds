@@ -16,11 +16,13 @@ class Fadeout extends FX {
 	}
 	
 	public override function update() {
-		var dalpha = 1.0 /  C.time2frame( 475 );
+		var dalpha : Float = 1.0 /  C.time2frame( 2000 );
 		alpha -= dalpha;
 		parent.traverse( function(c) {
-			var d = Std.instance( c, h2d.Drawable );
-			if ( d != null) d.alpha -= dalpha;
+			if ( Std.is( c, h2d.Drawable)) {
+				var d : h2d.Drawable = cast c;
+				if ( d != null) d.alpha -= dalpha;
+			}
 		});
 		
 		trace( alpha);

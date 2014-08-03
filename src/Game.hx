@@ -5,7 +5,7 @@ class Game extends flash.display.Sprite {
 	var engine : h3d.Engine;
 	var time : Ticker = new Ticker(C.FPS);
 	
-	var game : h2d.Scene;
+	var game : OffscreenScene;
 	var render : h2d.Scene;
 	
 	var tileRender : h2d.Tile;
@@ -27,32 +27,26 @@ class Game extends flash.display.Sprite {
 	
 	function init() {
 		hxd.System.setLoop(update);
-		game = new h2d.Scene();
+		game = new OffscreenScene(Math.round(screenRect.z),Math.round(screenRect.w));
 		render = new h2d.Scene();
 		
 		game.addChild( new ScreenLoading().init() );
 		
-		#if !NoRTT 
-		tileRender = h2d.Tile.fromTexture( new h3d.mat.Texture(2048,2048,false,true ) );
+		tileRender = h2d.Tile.fromTexture( new h3d.mat.Texture(2048,1024,false,true ) );
 		bmpTileRender = new h2d.Bitmap( tileRender, render );
-		#end
 		
 		Data.init();
 	}
 	
 	function update() 	{
 		time.update();
-		game.checkEvents();
 		
 		for( i in 0...time.dfr)
 			fxMan.update();
 		
-		#if !NoRTT 
-		game.captureBitmap(tileRender);
+		game.renderOffscreen(tileRender);
 		engine.render(render);
-		#else
-		engine.render(game);
-		#end
+	
 		
 		engine.restoreOpenfl();
 	}

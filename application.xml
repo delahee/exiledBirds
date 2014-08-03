@@ -23,7 +23,10 @@
 	
 	<!--
 	<haxedef name="NoRTT" />
+	
 	-->
+	
+	<haxedef name="noEmit" />
 	
 	<source path="libs" />
 	
