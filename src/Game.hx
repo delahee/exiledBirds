@@ -2,10 +2,14 @@ import mt.Ticker;
 import volute.fx.FXManager;
 
 class Game extends flash.display.Sprite {
+	
+	
+	public static var me : Game;
+	
 	var engine : h3d.Engine;
 	var time : Ticker = new Ticker(C.FPS);
 	
-	var game : OffscreenScene;
+	public var game : OffscreenScene;
 	var render : h2d.Scene;
 	
 	var tileRender : h2d.Tile;
@@ -14,7 +18,6 @@ class Game extends flash.display.Sprite {
 	var screenRect = new h3d.Vector(0, 0, 1280, 720);
 	
 	static var fxMan = new FXManager();
-	static var me : Game;
 	
 	function new() {
 		super();
@@ -27,6 +30,8 @@ class Game extends flash.display.Sprite {
 	
 	function init() {
 		hxd.System.setLoop(update);
+		Data.init();
+		
 		game = new OffscreenScene(Math.round(screenRect.z),Math.round(screenRect.w));
 		render = new h2d.Scene();
 		
@@ -34,19 +39,22 @@ class Game extends flash.display.Sprite {
 		
 		tileRender = h2d.Tile.fromTexture( new h3d.mat.Texture(2048,1024,false,true ) );
 		bmpTileRender = new h2d.Bitmap( tileRender, render );
-		
-		Data.init();
+	}
+	
+	function onFrame() {
+		game.checkEvents();
+		Screen.updateAll();
+		fxMan.update();
 	}
 	
 	function update() 	{
 		time.update();
 		
-		for( i in 0...time.dfr)
-			fxMan.update();
-		
+		for ( i in 0...time.dfr) 
+			onFrame();
+			
 		game.renderOffscreen(tileRender);
 		engine.render(render);
-	
 		
 		engine.restoreOpenfl();
 	}

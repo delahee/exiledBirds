@@ -8,7 +8,7 @@ import volute.fx.FX;
 class Fadeout extends FX {
 	var parent : Sprite;
 	var alpha = 1.0;
-	var alphalimit = 0.3;
+	var alphalimit = 0.5;
 	
 	public function new(p) {
 		super();
@@ -16,7 +16,7 @@ class Fadeout extends FX {
 	}
 	
 	public override function update() {
-		var dalpha : Float = 1.0 /  C.time2frame( 2000 );
+		var dalpha : Float = 1.0 /  C.time2frame( 450 );
 		alpha -= dalpha;
 		parent.traverse( function(c) {
 			if ( Std.is( c, h2d.Drawable)) {
@@ -25,7 +25,6 @@ class Fadeout extends FX {
 			}
 		});
 		
-		trace( alpha);
 		return alpha >= alphalimit; 
 	}
 	

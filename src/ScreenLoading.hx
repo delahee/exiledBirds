@@ -26,11 +26,12 @@ class ScreenLoading extends Screen {
 		if (paused) return;
 		
 		trace("let's play !");
+		var p  = Game.me.game;
 		var fx = new fx.Fadeout(this);
 		fx.onKill = function() {
-			trace("let's play fadeout !");
-			parent.addChild(new ScreenGame().init());
 			kill();
+			trace("let's play fadeout !");
+			p.addChild(new ScreenGame().init());
 		}
 		paused = true;
 	}

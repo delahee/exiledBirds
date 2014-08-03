@@ -34,7 +34,7 @@ class OffscreenScene extends h2d.Scene {
 			target.getTexture().alpha_premultiplied = true;
 		}
 		
-		checkEvents();
+		
 		
 		var oc = engine.triggerClear;
 		engine.triggerClear = true;

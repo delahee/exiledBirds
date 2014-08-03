@@ -23,7 +23,7 @@ class Screen extends h2d.Sprite {
 	}
 	
 	/** Dont forget to call me */
-	public function init(){
+	public function init() : Screen {
 		me = this;
 		isStarted = true;
 		visible = true;
