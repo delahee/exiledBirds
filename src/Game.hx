@@ -10,6 +10,8 @@ class Game extends flash.display.Sprite {
 	var time : Ticker = new Ticker(C.FPS);
 	
 	public var game : OffscreenScene;
+	public var coll : Coll;
+	
 	var render : h2d.Scene;
 	
 	var tileRender : h2d.Tile;

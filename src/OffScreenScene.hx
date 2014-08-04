@@ -1,7 +1,4 @@
 
-/**
- * Provides 
- */
 class OffscreenScene extends h2d.Scene {
 	var wantedWith : Int;
 	var wantedHeight : Int;
@@ -33,8 +30,6 @@ class OffscreenScene extends h2d.Scene {
 			#end
 			target.getTexture().alpha_premultiplied = true;
 		}
-		
-		
 		
 		var oc = engine.triggerClear;
 		engine.triggerClear = true;

@@ -45,8 +45,8 @@ class IntStack {
 		arr[pos++] = v;
 	}
 	
-	public inline function pop() :int {
-		if ( pos == 0 ) return null;
+	public inline function pop() : Int {
+		if ( pos == 0 ) return 0;
 			
 		var v = arr[pos-1]; 
 		arr[pos-1] = 0;

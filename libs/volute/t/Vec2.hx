@@ -44,14 +44,12 @@ class Vec2{
 		return vOut;
 	}
 	
-	public static inline function cross(v0: Vec2, v1:Vec2) : Float
-	{
-		return v0.x * v1.y - v0.y * v1.y;
+	public inline function cross(v1:Vec2) : Float {
+		return x * v1.y - y * v1.y;
 	}
 	
-	public static inline function dot(v0: Vec2, v1:Vec2) : Float
-	{
-		return v0.x * v1.x + v0.y * v1.y;
+	public inline function dot(v1:Vec2) : Float {
+		return x * v1.x + y * v1.y;
 	}
 	
 	//v0     v2
@@ -190,8 +188,8 @@ class Vec2{
 		a = a.clone().normalize();
 		b = b.clone().normalize();
 		
-		var c = cross(a, b);
-		var d = dot( a , b );
+		var c = a.cross( b );
+		var d = a.dot( b );
 		var a = c > 0 ? Math.acos( d ) : - Math.acos( d );
 		return a;
 	}
